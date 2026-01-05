@@ -2,48 +2,140 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Skins Personalizadas | Plataforma Oficial</title>
+<title>Skins Personalizadas • Plataforma Premium</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-:root{
-  --p:#00ffd5;--bg:#0b0b0b;--c:#151515;--b:#242424;--t:#eee;--m:#999
-}
-*{box-sizing:border-box}
-body{
-  margin:0;font-family:Arial,Helvetica,sans-serif;
-  background:radial-gradient(circle at top,#111,#000);color:var(--t)
-}
-header{text-align:center;padding:28px;border-bottom:1px solid var(--b)}
-header h1{margin:0;color:var(--p)}
-header p{margin-top:6px;color:var(--m);font-size:14px}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
 
-.container{max-width:1200px;margin:40px auto;padding:0 16px}
+:root{
+  --neon:#00ffd5;
+  --bg:#050505;
+  --glass:rgba(255,255,255,.06);
+  --border:rgba(255,255,255,.12);
+  --text:#eaeaea;
+  --muted:#9aa0a6;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:'Inter',sans-serif;
+  background:
+    radial-gradient(circle at top,#0f2027,#000),
+    linear-gradient(135deg,#000,#050505);
+  color:var(--text);
+}
+
+header{
+  text-align:center;
+  padding:40px 16px 30px;
+}
+
+header h1{
+  margin:0;
+  font-size:34px;
+  font-weight:800;
+  color:var(--neon);
+  text-shadow:0 0 25px rgba(0,255,213,.4);
+}
+
+header p{
+  margin-top:8px;
+  font-size:15px;
+  color:var(--muted);
+}
+
+.container{
+  max-width:1200px;
+  margin:30px auto;
+  padding:0 16px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:26px;
+}
+
 .card{
-  background:var(--c);border:1px solid var(--b);
-  border-radius:14px;padding:24px;margin-bottom:24px
+  background:var(--glass);
+  backdrop-filter:blur(14px);
+  border:1px solid var(--border);
+  border-radius:22px;
+  padding:26px;
+  box-shadow:
+    0 20px 40px rgba(0,0,0,.45),
+    inset 0 0 0 rgba(255,255,255,.05);
 }
-h2{margin-top:0}
+
+.card h2{
+  margin-top:0;
+  font-size:20px;
+  font-weight:700;
+}
+
 input,button{
-  width:100%;padding:12px;margin-top:10px;
-  border-radius:8px;font-size:14px;border:none
+  width:100%;
+  padding:14px;
+  margin-top:12px;
+  border-radius:14px;
+  border:none;
+  font-size:14px;
+  font-family:'Inter',sans-serif;
 }
-input{background:#0f0f0f;color:#fff;border:1px solid #333}
-button{background:var(--p);color:#000;font-weight:600;cursor:pointer}
-button:hover{opacity:.9}
+
+input{
+  background:rgba(0,0,0,.5);
+  color:#fff;
+  border:1px solid rgba(255,255,255,.15);
+}
+
+button{
+  background:linear-gradient(135deg,var(--neon),#00bfa5);
+  color:#000;
+  font-weight:700;
+  cursor:pointer;
+  transition:.3s;
+}
+
+button:hover{
+  transform:translateY(-2px);
+  box-shadow:0 0 25px rgba(0,255,213,.6);
+}
+
 .preview{
-  width:260px;height:260px;margin:20px auto;border-radius:50%;
-  border:10px solid var(--p);background:#000;
-  background-size:cover;background-position:center
+  width:260px;
+  height:260px;
+  margin:20px auto;
+  border-radius:50%;
+  background:#000;
+  background-size:cover;
+  background-position:center;
+  border:10px solid var(--neon);
+  box-shadow:
+    0 0 25px rgba(0,255,213,.7),
+    inset 0 0 20px rgba(0,0,0,.6);
 }
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+
+.effects label{
+  display:block;
+  font-size:12px;
+  margin-top:12px;
+  color:var(--muted);
+}
+
 .hidden{display:none}
-.admin{border:1px dashed var(--p)}
+
 footer{
-  text-align:center;font-size:12px;color:#777;
-  padding:30px;border-top:1px solid var(--b)
+  text-align:center;
+  font-size:12px;
+  color:#777;
+  padding:40px 10px 30px;
 }
-a{color:var(--p);word-break:break-all}
+
+a{color:var(--neon)}
 </style>
 </head>
 
@@ -51,14 +143,14 @@ a{color:var(--p);word-break:break-all}
 
 <header>
   <h1>Skins Personalizadas</h1>
-  <p>Crie skins PNG e use diretamente no Agar.io</p>
+  <p>Crie skins premium com bordas neon e efeitos exclusivos</p>
 </header>
 
 <div class="container">
 
 <!-- LOGIN -->
 <div id="loginBox" class="card">
-  <h2>Login / Cadastro</h2>
+  <h2>Entrar / Criar Conta</h2>
   <input id="email" placeholder="Email">
   <input id="senha" type="password" placeholder="Senha (mín. 6 caracteres)">
   <button onclick="login()">Entrar</button>
@@ -71,11 +163,23 @@ a{color:var(--p);word-break:break-all}
 
 <!-- EDITOR -->
 <div class="card">
-  <h2>Editor de Skin</h2>
+  <h2>Editor Premium</h2>
+
   <div id="preview" class="preview"></div>
+
   <input type="file" accept="image/png" onchange="carregarSkin(event)">
-  <input type="color" value="#00ffd5" onchange="mudarBorda(this.value)">
-  <input type="range" min="2" max="25" value="10" onchange="mudarEspessura(this.value)">
+
+  <div class="effects">
+    <label>Cor da borda</label>
+    <input type="color" value="#00ffd5" onchange="mudarBorda(this.value)">
+
+    <label>Espessura</label>
+    <input type="range" min="4" max="30" value="10" onchange="mudarEspessura(this.value)">
+
+    <label>Intensidade do glow</label>
+    <input type="range" min="0" max="40" value="25" onchange="mudarGlow(this.value)">
+  </div>
+
   <button onclick="salvarSkin()">Salvar Skin</button>
 </div>
 
@@ -83,14 +187,14 @@ a{color:var(--p);word-break:break-all}
 <div class="card">
   <h2>Sua Conta</h2>
   <p>Créditos: <strong id="creditos">0</strong></p>
-  <p>Suas skins:</p>
+  <h3>Suas Skins</h3>
   <div id="skinsList"></div>
 </div>
 
 <!-- COMPRA -->
 <div class="card">
   <h2>Comprar Créditos</h2>
-  <p><strong>R$ 7,99</strong> — 10 edições</p>
+  <p><strong>R$ 7,99</strong> • 10 edições premium</p>
   <p>
     PIX: <strong>jhonnyresende18@gmail.com</strong><br>
     Beneficiário: SkinsPersonalizadas
@@ -99,13 +203,6 @@ a{color:var(--p);word-break:break-all}
 </div>
 
 </div>
-
-<!-- ADMIN -->
-<div id="adminBox" class="card admin hidden">
-  <h2>Painel Admin</h2>
-  <div id="adminPayments"></div>
-</div>
-
 </div>
 
 <footer>
@@ -118,8 +215,6 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebas
 import { getAuth,createUserWithEmailAndPassword,signInWithEmailAndPassword,onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { getFirestore,doc,setDoc,getDoc,addDoc,collection,serverTimestamp,getDocs,updateDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 import { getStorage,ref,uploadString,getDownloadURL } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
-
-const ADMIN_EMAIL="jhonnyresende18@gmail.com";
 
 const firebaseConfig={
  apiKey:"AIzaSyBXRWZ-FEqZ4NI3AFtSXZu5XpvxdIuiN9U",
@@ -137,7 +232,6 @@ const storage=getStorage(app);
 
 let currentImage=null;
 
-// LOGIN
 window.login=async()=>{
  const email=document.getElementById("email").value;
  const senha=document.getElementById("senha").value;
@@ -158,19 +252,11 @@ onAuthStateChanged(auth,u=>u&&loadUser(u));
 async function loadUser(u){
  loginBox.classList.add("hidden");
  appBox.classList.remove("hidden");
-
  const snap=await getDoc(doc(db,"users",u.uid));
  if(snap.exists()) creditos.innerText=snap.data().creditos;
-
  carregarSkins(u.uid);
-
- if(u.email===ADMIN_EMAIL){
-  adminBox.classList.remove("hidden");
-  carregarPagamentos();
- }
 }
 
-// EDITOR
 window.carregarSkin=e=>{
  const f=e.target.files[0];
  if(!f||f.type!=="image/png") return alert("Apenas PNG");
@@ -184,35 +270,24 @@ window.carregarSkin=e=>{
 
 window.mudarBorda=c=>preview.style.borderColor=c;
 window.mudarEspessura=v=>preview.style.borderWidth=v+"px";
+window.mudarGlow=v=>preview.style.boxShadow=`0 0 ${v}px ${preview.style.borderColor}`;
 
-// SALVAR SKIN
 window.salvarSkin=async()=>{
  const u=auth.currentUser;
- if(!u) return alert("Faça login");
- if(!currentImage) return alert("Envie uma imagem");
-
+ if(!u||!currentImage) return alert("Faça login e envie uma imagem");
  const snap=await getDoc(doc(db,"users",u.uid));
  if(snap.data().creditos<=0) return alert("Sem créditos");
-
- const id=Date.now().toString();
- const storageRef=ref(storage,`skins/${u.uid}/${id}.png`);
- await uploadString(storageRef,currentImage,"data_url");
- const url=await getDownloadURL(storageRef);
-
- await addDoc(collection(db,"skins"),{
-  user:u.uid,url,criadoEm:serverTimestamp()
- });
-
- await updateDoc(doc(db,"users",u.uid),{
-  creditos:snap.data().creditos-1
- });
-
+ const id=Date.now();
+ const refImg=ref(storage,`skins/${u.uid}/${id}.png`);
+ await uploadString(refImg,currentImage,"data_url");
+ const url=await getDownloadURL(refImg);
+ await addDoc(collection(db,"skins"),{user:u.uid,url,criadoEm:serverTimestamp()});
+ await updateDoc(doc(db,"users",u.uid),{creditos:snap.data().creditos-1});
  creditos.innerText=snap.data().creditos-1;
  carregarSkins(u.uid);
  alert("Skin salva! Use o link no Agar.io");
 };
 
-// LISTAR SKINS
 async function carregarSkins(uid){
  skinsList.innerHTML="";
  const q=await getDocs(collection(db,"skins"));
@@ -224,7 +299,6 @@ async function carregarSkins(uid){
  });
 }
 
-// PAGAMENTO
 window.confirmarPagamento=async()=>{
  const u=auth.currentUser;
  if(!u) return alert("Faça login");
@@ -233,32 +307,8 @@ window.confirmarPagamento=async()=>{
  });
  alert("Pagamento enviado para verificação");
 };
-
-// ADMIN
-async function carregarPagamentos(){
- const q=await getDocs(collection(db,"payments"));
- adminPayments.innerHTML="";
- q.forEach(d=>{
-  const p=d.data();
-  if(p.status==="pendente"){
-   adminPayments.innerHTML+=`
-    <p>
-     UID: ${p.user} | R$ ${p.valor}
-     <button onclick="aprovar('${d.id}','${p.user}')">Aprovar</button>
-    </p>`;
-  }
- });
-}
-
-window.aprovar=async(pid,uid)=>{
- await updateDoc(doc(db,"payments",pid),{status:"aprovado"});
- const uref=doc(db,"users",uid);
- const usnap=await getDoc(uref);
- await updateDoc(uref,{creditos:(usnap.data().creditos||0)+10});
- alert("Créditos liberados");
- carregarPagamentos();
-};
 </script>
 
 </body>
 </html>
+
